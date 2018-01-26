@@ -1,0 +1,38 @@
+{
+  "name": "bigcommerce-sitewide-banners",
+  "version": "0.0.1",
+  "description": "Sitewide banners on your BigCommerce store theme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.brandlabs.net:brandlabs/bigcommerce-sitewide-banners.git"
+  },
+  "keywords": [
+    "bigcommerce",
+    "sitewide banners",
+    "banners"
+  ],
+  "author": "Brand Labs",
+  "license": "MIT",
+  "dependencies": {
+    "grunt": "^1.0.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "clean-webpack-plugin": "^0.1.18",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "grunt-eslint": "^20.1.0",
+    "grunt-sass-lint": "^0.2.4",
+    "grunt-webpack": "^3.0.2",
+    "uglifyjs-webpack-plugin": "^1.1.8",
+    "webpack": "^3.11.0",
+    "whatwg-fetch": "^2.0.3"
+  }
+}
