@@ -1,3 +1,4 @@
+/* eslint-disable */
 var path = require('path');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
