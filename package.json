@@ -1,6 +1,6 @@
 {
   "name": "bigcommerce-sitewide-banners",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Sets everything you need in order to have a proper Sitewide banner on your store",
   "main": "index.js",
   "scripts": {
