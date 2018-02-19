@@ -114,4 +114,4 @@ module.exports = class SiteWideBanners {
 
         insertBanner($element, banners, place);
     }
-}
+};
