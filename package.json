@@ -1,7 +1,7 @@
 {
   "name": "bigcommerce-sitewide-banners",
   "version": "0.0.1",
-  "description": "Sitewide banners on your BigCommerce store theme",
+  "description": "Sets everything you need in order to have a proper Sitewide banner on your store",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.brandlabs.net:brandlabs/bigcommerce-sitewide-banners.git"
+    "url": "git@github.com:brandlabs/bigcommerce-sitewide-banners.git"
   },
   "keywords": [
     "bigcommerce",
@@ -19,7 +19,7 @@
   "author": "Brand Labs",
   "license": "MIT",
   "dependencies": {
-    "grunt": "^1.0.2"
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -33,6 +33,6 @@
     "grunt-webpack": "^3.0.2",
     "uglifyjs-webpack-plugin": "^1.1.8",
     "webpack": "^3.11.0",
-    "whatwg-fetch": "^2.0.3"
+    "grunt": "^1.0.2"
   }
 }
