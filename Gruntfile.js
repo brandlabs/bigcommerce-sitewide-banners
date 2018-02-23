@@ -1,4 +1,3 @@
-/* eslint-disable */
 var path = require('path');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -9,7 +8,6 @@ module.exports = function(grunt) {
             target: [
                 'tasks/**/*.js',
                 'src/**/*.js',
-                'Gruntfile.js',
             ],
         },
 
@@ -54,7 +52,7 @@ module.exports = function(grunt) {
                     new UglifyJsPlugin()
                 ]
             },
-        }
+        },
     });
 
     // Load this plugin's task(s).
@@ -63,5 +61,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-eslint');
     grunt.loadNpmTasks('grunt-sass-lint');
     grunt.loadNpmTasks('grunt-webpack');
-    grunt.registerTask('default', ['eslint', 'sasslint']);
+    grunt.registerTask('default', ['eslint', 'sasslint', 'webpack']);
 };
