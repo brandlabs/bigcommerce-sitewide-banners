@@ -5,8 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Updated endpoint calls to use BigCommerce v3 API since previos form is deprecated now. This had the effect to us removing the test banner creation since Banners are not yet on v3.
+
 ### Added
-- Information about transpiled files.
+- Information about transpiled files on webpack.common.js files.
 
 ## [0.0.3] - 2018-02-23
 ### Added

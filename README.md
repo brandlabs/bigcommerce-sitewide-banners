@@ -89,7 +89,7 @@ You need to call `addBanners` every time a banner is needed on another location
 You also need to better handling for the `catch` part but it's good enough for our example.
 
 ## Notes
-- Since BigCommerce doesn't transpile external package code (for oldies like IE11), we provide transpiled files inside __dist/__ folder. You can access these files adding an alias on your `webpack.conf.js` file like `'bigcommerce-sitewide-banners': path.resolve(__dirname, 'node_modules/bigcommerce-sitewide-banners/dist/sitewide-banners.min.js')`
+- Since BigCommerce doesn't transpile external package code (for oldies like IE11), we provide transpiled files inside __dist/__ folder. You can access these files adding an alias on your `webpack.conf.js` (or `webpack.common.js`) file like `'bigcommerce-sitewide-banners': path.resolve(__dirname, 'node_modules/bigcommerce-sitewide-banners/dist/sitewide-banners.min.js')`
 
 ## Authors
 * Carson Reinke
