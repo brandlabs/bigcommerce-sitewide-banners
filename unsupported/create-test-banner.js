@@ -1,4 +1,6 @@
-
+/**
+ * NOTE: banners are not part of v3 yet, so you need to create a banner and associate it with the Sitewide Banner Category manually
+ */
 const path    = require ('path');
 const { URL } = require ('url');
 const https   = require ('https');
@@ -14,17 +16,18 @@ module.exports = function (grunt) {
 
         // we read the JSON content and append our custom template
         const stencil = grunt.file.readJSON (path.join (root, STENCIL_PATH));
-        const { username, token, normalStoreUrl } = stencil;
+        const { clientId, accessToken, normalStoreUrl } = stencil;
 
-        if (!username || !token) {
-            grunt.fatal (new Error ('Username and Token needed on .stencil file'));
+        if (!clientId || !accessToken) {
+            grunt.fatal (new Error ('clientId and accessToken needed on .stencil file'));
         }
 
         const siteUrl        = new URL (normalStoreUrl);
-        const categoryResult = await getCategory (siteUrl.host, username, token, grunt);
+        const [, storeHash] = /store-(.+).mybigcommerce.com/.exec(siteUrl.host);
+        const categoryResult = await getCategory (siteUrl.host, clientId, accessToken, grunt);
 
         if (categoryResult && categoryResult.length) {
-            await createTestBanner (siteUrl.host, username, token, categoryResult[0].id, grunt);
+            await createTestBanner (storeHash, clientId, accessToken, categoryResult[0].id, grunt);
         }
 
         done();
@@ -34,23 +37,26 @@ module.exports = function (grunt) {
 /**
  * We use BigCommerce API to create the Sitewide banners category and resolve with the category created IS
  *
- * @param   {string}    host
- * @param   {string}    username
- * @param   {string}    token
+ * @param   {string}    storeHash
+ * @param   {string}    clientId
+ * @param   {string}    accessToken
  * @returns {Promise}
  */
-function getCategory (host, username, token, grunt) {
+function getCategory (storeHash, clientId, accessToken, grunt) {
 
     return new Promise (function (resolve, reject) {
 
         const options = {
-            host,
-            path:    `/api/v2/categories.json?name=${ encodeURI ('Sitewide banners') }`,
-            auth:    `${ username }:${ token }`,
+            host: 'api.bigcommerce.com',
+            procotol: 'https:',
+            // path:    `/api/v2/categories.json?name=${ encodeURI ('Sitewide banners') }`,
+            path:    `/stores/${ storeHash }/v3/catalog/categories?name=${ encodeURI ('Sitewide banners') }`,
             method:  'get',
             headers: {
                 accept:         'application/json',
                 'Content-Type': 'application/json',
+                'X-Auth-Client': clientId,
+                'X-Auth-Token': accessToken,
             },
         };
 
