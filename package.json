@@ -1,6 +1,6 @@
 {
   "name": "bigcommerce-sitewide-banners",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Sets everything you need in order to have a proper Sitewide banner on your store",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,12 @@
     "sitewide banners",
     "banners"
   ],
-  "author": "Brand Labs",
+  "author": "Hector Fernando Hurtado Montoya",
+  "contributors": [
+    {
+      "name": "Carson Reinke"
+    }
+  ],
   "license": "MIT",
   "dependencies": {
     "whatwg-fetch": "^2.0.3"
