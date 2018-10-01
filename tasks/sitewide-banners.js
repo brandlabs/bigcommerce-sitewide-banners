@@ -8,7 +8,7 @@ module.exports = function (grunt) {
             'bigcommerce-sitewide-banners:add-template-to-stencil',
             'bigcommerce-sitewide-banners:add-script-import',
             'bigcommerce-sitewide-banners:create-category',
-            'bigcommerce-sitewide-banners:create-test-banner',
+            // 'bigcommerce-sitewide-banners:create-test-banner', // Unsupported on v3 yet.
         ];
 
         grunt.task.run (tasks);

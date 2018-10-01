@@ -23,7 +23,6 @@ Running this command we
 - add a line on `theme.scss` to hide the _sitewide banner_ Category (since BigCommerce adds this as a menu item)
 - add a line to `.stencil` file for local development
 - create Sitewide banner Category page using the BigCommerce API
-- create a test banner using the BigCommerce API.
 
 Manual steps:
 - On global.js file you need to call the `getBanner()` function based on your preferences (We like on the `before` function call);
@@ -31,6 +30,7 @@ Manual steps:
 - Apply the uploaded theme.
 - Go to __Products__ > __Product Categories__ and click on __Sitewide banners__ Category.
 - On __template file__ dropdown select `sitewide-banners`. Click __Save & Exit__.
+- On __Marketing__ > __Banners__ create (or edit) a banner and associate it to _Sitewide banners_. 
 
 You can follow the explanatory video where we show some settings for our package on the __assets__ folder.
 
@@ -89,7 +89,7 @@ You need to call `addBanners` every time a banner is needed on another location
 You also need to better handling for the `catch` part but it's good enough for our example.
 
 ## Notes
-- Since BigCommerce doesn't transpile external package code (for oldies like IE11), we provide transpiled files inside __dist/__ folder. You can access these files adding an alias on your `webpack.conf.js` file like `'bigcommerce-sitewide-banners': path.resolve(__dirname, 'node_modules/bigcommerce-sitewide-banners/dist/sitewide-banners.min.js')`
+- Since BigCommerce doesn't transpile external package code (for oldies like IE11), we provide transpiled files inside __dist/__ folder. You can access these files adding an alias on your `webpack.conf.js` (or `webpack.common.js`) file like `'bigcommerce-sitewide-banners': path.resolve(__dirname, 'node_modules/bigcommerce-sitewide-banners/dist/sitewide-banners.min.js')`
 
 ## Authors
 * Carson Reinke

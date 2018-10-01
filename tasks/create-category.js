@@ -8,8 +8,13 @@ const root    = process.cwd();
 const STENCIL_PATH = '.stencil';
 
 const categoryData = {
+    parent_id:   0,
     name:        'Sitewide banners',
-    url:         '/sitewide-banners/',
+    is_visible:  true,
+    custom_url: {
+        url:           '/sitewide-banners/',
+        is_customized: false,
+    },
     layout_file: 'category.html',   // As per BigCommerce docs, this refers to blueprint, but it should work
 };
 
@@ -20,15 +25,16 @@ module.exports = function (grunt) {
 
         // we read the JSON content and append our custom template
         const stencil = grunt.file.readJSON (path.join (root, STENCIL_PATH));
-        const { username, token, normalStoreUrl } = stencil;
+        const { clientId, accessToken, normalStoreUrl } = stencil;
 
-        if (!username || !token) {
-            grunt.fatal (new Error ('Username and Token needed on .stencil file'));
+        if (!clientId || !accessToken) {
+            grunt.fatal (new Error ('clientId and accessToken needed on .stencil file'));
         }
 
         const siteUrl = new URL (normalStoreUrl);
+        const [, storeHash] = /store-(.+).mybigcommerce.com/.exec(siteUrl.host);
 
-        await createCategory (siteUrl.host, username, token, grunt);
+        await createCategory (storeHash, clientId, accessToken, grunt);
 
         done();
     });
@@ -37,23 +43,25 @@ module.exports = function (grunt) {
 /**
  * We use BigCommerce API to create the Sitewide banners category and resolve with the category created IS
  *
- * @param   {string}    host
- * @param   {string}    username
- * @param   {string}    token
+ * @param   {string}    storeHash
+ * @param   {string}    clientId
+ * @param   {string}    accessToken
  * @returns {Promise}
  */
-function createCategory (host, username, token, grunt) {
+function createCategory (storeHash, clientId, accessToken, grunt) {
 
     return new Promise (function (resolve, reject) {
 
         const options = {
-            host,
-            path:    '/api/v2/categories.json',
-            auth:    `${ username }:${ token }`,
-            method:  'post',
+            host:     'api.bigcommerce.com',
+            procotol: 'https:',
+            path:     `/stores/${ storeHash }/v3/catalog/categories`,
+            method:   'post',
             headers: {
-                accept:         'application/json',
-                'Content-Type': 'application/json',
+                accept:          'application/json',
+                'Content-Type':  'application/json',
+                'X-Auth-Client': clientId,
+                'X-Auth-Token':  accessToken,
             },
         };
 
