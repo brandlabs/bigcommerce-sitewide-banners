@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Information about transpiled files on webpack.common.js files.
 
+### Fixed
+- When not used the sitewide banners package a TypeError was thrown because the banners array was not empty but with an `undefined` object.
+
 ## [0.0.3] - 2018-02-23
 ### Added
 - This document
