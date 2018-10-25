@@ -726,7 +726,7 @@ module.exports = function () {
                 $element = document.querySelector(place);
             }
 
-            if (!$element || !banners || banners.length === 0) {
+            if (!$element || !banners || banners.length === 0 || banners[0] === undefined) {
                 return;
             }
 
