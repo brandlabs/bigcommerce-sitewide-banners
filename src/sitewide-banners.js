@@ -1,4 +1,4 @@
-import 'whatwg-fetch';
+require('whatwg-fetch');
 
 const BANNER_URL = '/sitewide-banners/';
 
