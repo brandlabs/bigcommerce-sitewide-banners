@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.2.0] - 2018-11-28
+### Fixed
+- Switch to `require` instead of `import` because module uses `module.exports`
+- NPM audit fix
+
 ## [0.1.1] - 2018-10-25
 ### Fixed
 - When not used the sitewide banners package a TypeError was thrown because the banners array was not empty but with an `undefined` object.
@@ -33,7 +38,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Initial project
 
-[Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.2...v0.1.0
 [0.0.2]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.1...v0.0.2
