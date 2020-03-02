@@ -14,6 +14,8 @@ Have a valid `.stencil` file as documented [here](https://stencil.bigcommerce.co
 
 ### Installing
 
+`npm install bigcommerce-sitewide-banners`
+
 You need to add `grunt.loadNpmTasks('bigcommerce-sitewide-banners');` on your theme GruntFile.js.
 
 On your terminal run `grunt bigcommerce-sitewide-banners:init`
@@ -25,7 +27,7 @@ Running this command we
 - create Sitewide banner Category page using the BigCommerce API
 
 Manual steps:
-- On global.js file you need to call the `getBanner()` function based on your preferences (We like on the `before` function call);
+- On global.js file you need to call the `getBanner()` function based on your preferences (please check the example a couple of sections below);
 - Bundle your theme and upload it into your store.
 - Apply the uploaded theme.
 - Go to __Products__ > __Product Categories__ and click on __Sitewide banners__ Category.
@@ -59,17 +61,34 @@ and we want to apply these on all pages, one at the top, one at the bottom and o
 import SiteWideBanner from 'bigcommerce-sitewide-banners';
 
 export default class Global extends PageManager {
-    before(next) {
+    onReady() {
+        cartPreview(this.context.secureBaseUrl, this.context.cartId);
+        quickSearch();
+        currencySelector();
+        foundation($(document));
+        quickView(this.context);
+        carousel();
+        menu();
+        mobileMenuToggle();
+        privacyCookieNotification();
+        maintenanceMode(this.context.maintenanceMode);
+        loadingProgressBar();
+        svgInjector();
+        objectFitImages();
+
         const swb = new SiteWideBanner();
         swb.getBanners()
             .then(banners => {
+                // On dashboard selected as Top of page
                 swb.addBanners({ banners: [banners.top[0]] });
+
+                // On dashboard selected as Top of page
                 swb.addBanners({ place: 'bottom', banners: [banners.top[1]] });
-                swb.addBanners({ place: '.page-heading', banners: [banners.top[2]] });
+
+                // On dashboard selected as Bottom of page
+                swb.addBanners({ place: '.page-heading', banners: [banners.bottom[0]] });
             })
             .catch(error => console.error(error));
-
-        next();
     }
 }
 ```
